@@ -21,15 +21,15 @@ function App() {
         <Router>
           <Bar setOpen={setOpen} />
           <Switch>
-            <Route path="/PackageList">
+            <Route path="/package-list">
               <PackageList />
             </Route>
 
-            <Route path="/InvoiceList">
+            <Route path="/invoice-list">
               <InvoiceList />
             </Route>
 
-            <Route path="/Invoice/:id">
+            <Route path="/invoice/:id">
               <Invoice />
             </Route>
 

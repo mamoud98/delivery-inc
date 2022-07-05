@@ -20,12 +20,12 @@ function SideList(props) {
           <ListItemLink
             onclick={togleDrawer}
             primary={"PackageList"}
-            to="/PackageList"
+            to="/package-list"
           />
           <ListItemLink
             onclick={togleDrawer}
             primary={"InvoiceList"}
-            to="/InvoiceList"
+            to="/invoice-list"
           />
         </List>
       </Drawer>

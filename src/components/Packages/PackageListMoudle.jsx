@@ -66,16 +66,13 @@ function PackageListMoudle(props) {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <FormControl>
+          <FormControl fullWidth={true}>
+            <h1>add package</h1>
             <form onSubmit={handleSubmit}>
-              <Grid
-                container
-                alignItems="center"
-                justify="center"
-                direction="column"
-              >
+              <Grid alignItems="center" justify="center" direction="column">
                 <Grid item style={{ marginBottom: "15px" }}>
                   <TextField
+                    fullWidth={true}
                     InputProps={{ inputProps: { min: 1 } }}
                     required
                     id="name-input"
@@ -111,6 +108,7 @@ function PackageListMoudle(props) {
 
                 <Grid item style={{ marginBottom: "15px" }}>
                   <TextField
+                    fullWidth={true}
                     InputProps={{ inputProps: { min: 1 } }}
                     required
                     id="age-input"

@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../context/context";
 import DeleteConfirmation from "../../shared/DeleteConfirmation/DeleteConfirmation";
 
 const DeleteCustomerModal = (props) => {
-  const { deleteCustomer } = useGlobalContext()
+  const { deleteCustomer } = useGlobalContext();
 
   const deleteAction = () => {
     deleteCustomer(props.userId);

@@ -28,27 +28,32 @@ const AppProvider = ({ children }) => {
 
   //create invoices dynamiclly based on packages and customers
   const createInvoices = useCallback(() => {
+    //to hold the invoices inside the array
     let invoices = [];
 
-    state.customers.forEach((customer) => {
+    state.customers.forEach((customer, index) => {
+      //get the customer,s packages by customer ID
       let customerPackages = state.packages.filter(
         (pack) => pack.customerid === customer.id
       );
-
+      //cheack if the customer has Packages
       if (customerPackages.length > 0) {
         let waightSum = 0;
         let priceSum = 0;
         customerPackages.forEach((pack) => {
+          //removing "kg" and converting to the weight number to calculate the sum of the weight
           waightSum += Number(pack.weight?.replace("kg", ""));
+          //converting to the price to number to calculate the sum of the price
           priceSum += Number(pack.price);
         });
 
         let invoice = {
-          id: Date.now(),
+          id: Date.now() + index,
           customer: customer,
           totalWeight: waightSum,
           totalPrice: priceSum,
         };
+
         invoices.push(invoice);
       }
     });
@@ -64,12 +69,14 @@ const AppProvider = ({ children }) => {
     fetch("/data.json")
       .then((response) => response.json())
       .then((data) => {
+        //make sort based on the shipping Order
         let sortedPackages = data.packages.sort(
           (prev, next) => prev.shippingOrder - next.shippingOrder
         );
-
+        //make a new sorted Packages array that has the customer name for each package
         sortedPackages = sortedPackages.map((pack) => {
           let customers = data.customers;
+          //get the first customer,s packages by customer ID
           let customer = customers.find(
             (customer) => customer.id === pack.customerid
           );
@@ -86,7 +93,7 @@ const AppProvider = ({ children }) => {
         });
       });
   };
-
+  //delete Customer based on Customer Id
   const deleteCustomer = (id) => {
     dispatch({
       type: appDataConstant.Delete_Customer,
@@ -95,7 +102,7 @@ const AppProvider = ({ children }) => {
       },
     });
   };
-
+  //delete Package based on Package Id
   const deletePackage = (id) => {
     dispatch({
       type: appDataConstant.Delete_Package,
@@ -143,6 +150,7 @@ const AppProvider = ({ children }) => {
 
   const getCustomerInvoice = useCallback(
     (customerId) => {
+      //get the first customer,s packages by customer ID
       let invoice = invoices.find(
         (invoice) => invoice.customer.id === customerId
       );

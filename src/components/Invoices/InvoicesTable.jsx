@@ -11,7 +11,7 @@ import {
 import InvoicesTableRow from "./InvoicesTableRow";
 import { useGlobalContext } from "../../context/context";
 const InvoicesTable = () => {
-  const { invoices } = useGlobalContext()
+  const { invoices } = useGlobalContext();
   return (
     <TableContainer component={Paper}>
       {invoices.length > 0 ? (

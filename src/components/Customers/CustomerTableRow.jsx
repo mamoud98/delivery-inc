@@ -21,10 +21,7 @@ const CustomerTableRow = (props) => {
         </TableCell>
         <TableCell>{props.user.name}</TableCell>
         <TableCell>
-          <Link
-            style={style.link}
-            to={`/Invoice/${props.user.id}`}
-          >
+          <Link style={style.link} to={`/invoice/${props.user.id}`}>
             <Button variant="contained">Create Invoice</Button>
           </Link>
         </TableCell>
