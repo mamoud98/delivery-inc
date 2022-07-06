@@ -41,9 +41,9 @@ const AppProvider = ({ children }) => {
         let waightSum = 0;
         let priceSum = 0;
         customerPackages.forEach((pack) => {
-          //removing "kg" and converting to the weight number to calculate the sum of the weight
+          //removing "kg" and converting the weight to number to calculate the sum of the weight
           waightSum += Number(pack.weight?.replace("kg", ""));
-          //converting to the price to number to calculate the sum of the price
+          //converting the price to number to calculate the sum of the price
           priceSum += Number(pack.price);
         });
 
